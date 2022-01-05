@@ -173,7 +173,7 @@ function recAnimate(state){
     let recAnimationKeyFrames = new KeyframeEffect(
         rec,
         [
-            {backgroundColor: "grey"},
+            {backgroundColor: "rgb(83, 83, 83)"},
             {backgroundColor: "red"}
         ],
         {duration:1000, iterations:Infinity}
@@ -195,7 +195,7 @@ function playAnimate(state){
     let recAnimationKeyFrames = new KeyframeEffect(
         rec,
         [
-            {backgroundColor: "grey"},
+            {backgroundColor: "rgb(83, 83, 83)"},
             {backgroundColor: "green"}
         ],
         {duration:1000, iterations:Infinity}

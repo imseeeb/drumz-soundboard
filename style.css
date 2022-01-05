@@ -1,53 +1,74 @@
 body{
-    display:flex;
-    flex-wrap: wrap;
+    margin:0;
     background-color: black;
+    
+}
+
+.wrapper{
+    display: grid;
+}
+
+.sounds, .keys{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+  }
+
+.keys{
+    pointer-events: none;
 }
 .sound{
-    display:flex;
-    flex-direction: column;
-    width: 90px;
-    height: 90px;
+    background-color: rgb(83, 83, 83);
+    display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: flex-end;
+  }
 
-    margin:2px;
-    font-size: 25px;
-    font-family: monospace;
-    font-weight: 900;
-    background-color: grey;
+.key{
+    pointer-events: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sounds{
-    display:flex;
-    flex-wrap:wrap;
+.key::before{
+    content:'';
+    width: 100%;
+    padding-top: 100%;
 }
 
 span{
     pointer-events: none;
-    font-size:12px;
-    position:absolute;
-    margin-top:60px;
+    position: absolute;
 }
-.keys{
-    pointer-events: none;
-    position:absolute;
-    display:flex;
-    flex-wrap:wrap;
-}
-.key{    
-    color:black;
-    display:flex;
-    flex-direction: column;
-    width: 90px;
-    height: 90px;
-    justify-content: center;
-    align-items:center;
 
-    margin:2px;
-    font-size: 25px;
+.sounds, .keys{
+    grid-area: 1 / 1;
+}
+
+.key span{
+    font-size: 500%;
     font-family: monospace;
     font-weight: 900;
+}
+
+.sound span{
+    font-size: 150%;
+    font-family: monospace;
+    font-weight: 900;
+}
+
+@media (max-aspect-ratio: 3/4){
+    .sounds, .keys{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-aspect-ratio: 4/3){
+    .sounds, .keys{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
 }
 
 .boom{
