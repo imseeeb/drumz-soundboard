@@ -1,0 +1,83 @@
+body{
+    display:flex;
+    flex-wrap: wrap;
+    background-color: black;
+}
+.sound{
+    display:flex;
+    flex-direction: column;
+    width: 90px;
+    height: 90px;
+    justify-content: center;
+    align-items:center;
+
+    margin:2px;
+    font-size: 25px;
+    font-family: monospace;
+    font-weight: 900;
+    background-color: grey;
+}
+
+.sounds{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+span{
+    pointer-events: none;
+    font-size:12px;
+    position:absolute;
+    margin-top:60px;
+}
+.keys{
+    pointer-events: none;
+    position:absolute;
+    display:flex;
+    flex-wrap:wrap;
+}
+.key{    
+    color:black;
+    display:flex;
+    flex-direction: column;
+    width: 90px;
+    height: 90px;
+    justify-content: center;
+    align-items:center;
+
+    margin:2px;
+    font-size: 25px;
+    font-family: monospace;
+    font-weight: 900;
+}
+
+.boom{
+    background-color: rgb(172, 48, 17);
+}
+.clap{
+    background-color: rgb(172, 87, 17);
+}
+.hihat{
+    background-color: rgb(162, 172, 17);
+}
+.kick{
+    background-color: rgb(30, 172, 17);
+}
+.openhat{
+    background-color: rgb(17, 172, 172);
+}
+.ride{
+    background-color: rgb(17, 40, 172);
+}
+.snare{
+    background-color: rgb(102, 17, 172);
+}
+.tink{
+    background-color: rgb(172, 17, 172);
+}
+.tom{
+    background-color: rgb(172, 17, 89);
+}
+
+.hover{
+    background-color:rgb(235, 235, 235);
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='UTF-8'>
+    <title>DRUMZ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="keys">
+        <div class="key a">A</div>
+        <div class="key s">S</div>
+        <div class="key d">D</div>
+        <div class="key f">F</div>
+        <div class="key g">G</div>
+        <div class="key h">H</div>
+        <div class="key j">J</div>
+        <div class="key k">K</div>
+        <div class="key l">L</div>
+        <div class="key z">Z</div>
+        <div class="key x">X</div>
+        <div class="key c">C</div>
+    </div>
+
+    <div class="sounds">
+        <div class="sound boom" draggable=true><span>BOOM</span></div>
+        <div class="sound clap" draggable=true><span>CLAP</span></div>
+        <div class="sound hihat" draggable=true><span>HIHAT</span></div>
+        <div class="sound kick" draggable=true><span>KICK</span></div>
+        <div class="sound openhat" draggable=true><span>OPENHAT</span></div>
+        <div class="sound ride" draggable=true><span>RIDE</span></div>
+        <div class="sound snare" draggable=true><span>SNARE</span></div>
+        <div class="sound tink" draggable=true><span>TINK</span></div>
+        <div class="sound tom" draggable=true><span>TOM</span></div>
+        <div class="sound record" ondragover=noAllowDrop(event) ondragenter=noAllowDrop(event) ondragleave=noAllowDrop(event) ondrop=noAllowDrop(event)><span>REC</span></div>
+        <div class="sound stop" ondragover=noAllowDrop(event) ondragenter=noAllowDrop(event) ondragleave=noAllowDrop(event) ondrop=noAllowDrop(event)><span>STOP</span></div>
+        <div class="sound play" ondragover=noAllowDrop(event) ondragenter=noAllowDrop(event) ondragleave=noAllowDrop(event) ondrop=noAllowDrop(event)><span>PLAY</span></div>
+    </div>
+</body>
