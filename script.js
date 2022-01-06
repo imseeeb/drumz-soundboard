@@ -153,8 +153,9 @@ document.addEventListener('keydown', function(e){
 //LISTENING FOR CLICKS
 document.addEventListener('click', function(e){
     let instrument = e.target.classList[1];
-    let sound = new Audio(instruments[instrument]);
-    sound.play();
+    let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
+
+    pressKey(getKey);
 });
 
 //----------------------------------------------------------//
@@ -238,10 +239,9 @@ function playing(){
     async function loopThrough () { // We need to wrap the loop into an async function for this to work
         for (var i = 0; i < recording.time.length; i++) {
             await timer(recording.play[i]); // then the created Promise can be awaited
+            if (isRecordingFlag==1 || isStopFlag==1) return;
             let evt = new KeyboardEvent('keydown', {key: recording.key[i]})
             document.dispatchEvent(evt)
-
-            if (isRecordingFlag==1 || isStopFlag==1) return;
         }
     }
     //////////////////////////////////////////////////////////////////////
@@ -268,3 +268,17 @@ function stop(){
     let evt = new KeyboardEvent('keydown', {key: 'a'})
     document.dispatchEvent(evt)
   }, 2000)*/
+
+function index(el) {
+    if (!el) return -1;
+    var i = 0;
+    while (el = el.previousElementSibling) {
+      i++;
+    }
+    return i;
+  }
+  
+function pressKey(e) {
+    let evt = new KeyboardEvent('keydown', {key: e});
+    document.dispatchEvent(evt)
+}
