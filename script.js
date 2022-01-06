@@ -144,10 +144,17 @@ document.addEventListener('keydown', function(e){
         playAnimate('pause');
     }
     if (e.key=='c'){
-        play();
+        playing();
         keyAnimate(e.key);
         playAnimate('play');
     }
+});
+
+//LISTENING FOR CLICKS
+document.addEventListener('click', function(e){
+    let instrument = e.target.classList[1];
+    let sound = new Audio(instruments[instrument]);
+    sound.play();
 });
 
 //----------------------------------------------------------//
@@ -220,7 +227,7 @@ function record(){
     });
 }
 
-function play(){
+function playing(){
     isRecordingFlag=0;
     isStopFlag=0;
     isPlayFlag=1;
