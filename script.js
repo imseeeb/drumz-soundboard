@@ -41,9 +41,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigato
     let currentTouch;
 
     document.addEventListener('touchstart',function(e){
+        if (e.target.classList[0]!="sound") return;
         currentTouch=e.target.classList[1];
 
         if (mswap1==0 && switchFlag == 0 && e.touches.length<2){
+
+            if (currentTouch == "record" || currentTouch == "stop" || currentTouch == "play") return
             timer = setTimeout(mobileSwitch, 1000);
         }
 
