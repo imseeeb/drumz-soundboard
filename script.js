@@ -220,6 +220,12 @@ document.addEventListener('keydown', function(e){
         keyAnimate(e.key);
         playAnimate('play');
     }
+
+    if (isRecordingFlag==1){
+        if (e.key=='z' || e.key =='c') return;
+        recording.key.push(e.key);
+        recording.time.push(performance.now());
+    }
 });
 
 //LISTENING FOR CLICKS
@@ -237,7 +243,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigato
 
 else{
     document.addEventListener('click', function(e){
-        
+        if (e.target.classList[0]!="sound") return;
         let instrument = e.target.classList[1];
         let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
 
@@ -305,16 +311,28 @@ function playAnimate(state){
 
 function record(){
     isStopFlag=0;
-    isRecordingFlag = 1;
     isPlayFlag=0;
+    
+    //empty the previous recording//
+    
+    recording.key.length=0;
+    recording.play.length=0;
+    recording.time.length=0;
+    
+
     recordingStart = performance.now();
 
+    isRecordingFlag = 1;
+
+/*
     document.addEventListener('keydown',function(e){
         if (isRecordingFlag==0 || isStopFlag==1) return;
 
+        if (isRecordingFlag==1 && e.key=='z' || e.key =='c') return;
         recording.key.push(e.key);
         recording.time.push(performance.now());
     });
+*/
 }
 
 function playing(){
@@ -326,7 +344,7 @@ function playing(){
     const timer = ms => new Promise(res => setTimeout(res, ms))
 
     async function loopThrough () { // We need to wrap the loop into an async function for this to work
-        for (var i = 0; i < recording.time.length; i++) {
+        for (i = 0; i < recording.time.length; i++) {
             await timer(recording.play[i]); // then the created Promise can be awaited
             if (isRecordingFlag==1 || isStopFlag==1) return;
             let evt = new KeyboardEvent('keydown', {key: recording.key[i]})
