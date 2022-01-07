@@ -28,6 +28,9 @@ let recording = {
 }
 
 let recordingStart;
+
+let switchFlag=0;
+let keyStop=0;
 //----------------------------------------------------------//
 //DRAG AND DROP -> SWITCH SOUNDS
 
@@ -36,7 +39,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigato
     let timer;
     let mswap1=0, mswap2;
     let currentTouch;
-    let switchFlag=0;
 
     document.addEventListener('touchstart',function(e){
         currentTouch=e.target.classList[1];
@@ -74,10 +76,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigato
         if (switchFlag==0){
             clearTimeout(timer);
             mswap1=0;
+            setTimeout(()=>{keyStop=0},50)
         }
     });
 
     function mobileSwitch(){
+        keyStop=1;
         switchFlag=1;
         mswap1=currentTouch;
         document.querySelector('.'+mswap1).classList.add('hover');
@@ -209,10 +213,13 @@ document.addEventListener('keydown', function(e){
 
 //LISTENING FOR CLICKS
 document.addEventListener('click', function(e){
+    
     let instrument = e.target.classList[1];
     let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
 
-    pressKey(getKey);
+    if (keyStop==0){
+        pressKey(getKey);
+    }
 });
 
 //----------------------------------------------------------//
