@@ -9,3 +9,4 @@ Inspired by **JavaScript30** challenge: https://github.com/wesbos/JavaScript30
 - drag and drop to switch sounds' place
 - record pattern and play
 - automatically adjusts squares size to screen
+- works on mobile devices
