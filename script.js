@@ -29,8 +29,63 @@ let recording = {
 
 let recordingStart;
 //----------------------------------------------------------//
-
 //DRAG AND DROP -> SWITCH SOUNDS
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent) ) {
+
+    let timer;
+    let mswap1=0, mswap2;
+    let currentTouch;
+    let switchFlag=0;
+
+    document.addEventListener('touchstart',function(e){
+        currentTouch=e.target.classList[1];
+
+        if (mswap1==0 && switchFlag == 0 ){
+            timer = setTimeout(mobileSwitch, 750);
+        }
+
+        if (switchFlag==1){
+            mswap2=e.target.classList[1];
+
+            if (mswap1==mswap2) return;
+            if (currentTouch=='record' ||currentTouch=='stop'||currentTouch=='play'){
+                document.querySelector(`.${mswap1}`).classList.remove('hover');
+                switchFlag=0;
+                return
+            }
+        
+            let select1 = document.querySelector(`.${mswap1}`),
+                select2 = document.querySelector(`.${mswap2}`);
+        
+            select1.classList.add(mswap2);
+            select1.classList.remove(mswap1);
+            select1.innerHTML = `<span>${mswap2.toUpperCase()}</span>`;
+            select2.classList.add(mswap1);
+            select2.classList.remove(mswap2);
+            select2.innerHTML = `<span>${mswap1.toUpperCase()}</span>`;
+            select1.classList.remove('hover');
+
+            switchFlag=0;
+        }
+    })
+    
+    document.addEventListener('touchend',function(e){
+        if (switchFlag==0){
+            clearTimeout(timer);
+            mswap1=0;
+        }
+    });
+
+    function mobileSwitch(){
+        switchFlag=1;
+        mswap1=currentTouch;
+        document.querySelector('.'+mswap1).classList.add('hover');
+            //switchFlag=0;
+    }
+}
+
+else{
 function noAllowDrop(ev) {
     ev.stopPropagation();
 }
@@ -87,7 +142,9 @@ document.addEventListener('drop',function(e){
     select2.classList.remove(swap2);
     select2.innerHTML = `<span>${swap1.toUpperCase()}</span>`;
     select2.classList.remove('hover');
-})
+});
+
+}
 
 //----------------------------------------------------------//
 
