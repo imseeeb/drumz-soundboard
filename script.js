@@ -221,25 +221,28 @@ document.addEventListener('keydown', function(e){
 
 //LISTENING FOR CLICKS
 
-document.addEventListener('touchstart', function(e){
-    let instrument = e.target.classList[1];
-    let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent) ) {
+    document.addEventListener('touchstart', function(e){
+        let instrument = e.target.classList[1];
+        let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
 
-    if (keyStop==0){
-        pressKey(getKey);
-    }
-})
+        if (keyStop==0){
+            pressKey(getKey);
+        }
+    })
+}
 
-/*
-document.addEventListener('click', function(e){
-    
-    let instrument = e.target.classList[1];
-    let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
+else{
+    document.addEventListener('click', function(e){
+        
+        let instrument = e.target.classList[1];
+        let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
 
-    if (keyStop==0){
-        pressKey(getKey);
-    }
-});*/
+        if (keyStop==0){
+            pressKey(getKey);
+        }
+    });
+}
 
 //----------------------------------------------------------//
 
