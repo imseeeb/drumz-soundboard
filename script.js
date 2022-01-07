@@ -43,8 +43,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigato
     document.addEventListener('touchstart',function(e){
         currentTouch=e.target.classList[1];
 
-        if (mswap1==0 && switchFlag == 0 ){
-            timer = setTimeout(mobileSwitch, 750);
+        if (mswap1==0 && switchFlag == 0 && e.touches.length<2){
+            timer = setTimeout(mobileSwitch, 1000);
         }
 
         if (switchFlag==1){
@@ -71,6 +71,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigato
             switchFlag=0;
         }
     })
+
+    document.addEventListener('touchmove',function(e){
+        if (switchFlag==0){
+            clearTimeout(timer);
+            mswap1=0;
+            setTimeout(()=>{keyStop=0},50)
+        }
+    });
     
     document.addEventListener('touchend',function(e){
         if (switchFlag==0){
@@ -212,6 +220,17 @@ document.addEventListener('keydown', function(e){
 });
 
 //LISTENING FOR CLICKS
+
+document.addEventListener('touchstart', function(e){
+    let instrument = e.target.classList[1];
+    let getKey = document.querySelectorAll('.key')[index(document.querySelector('.'+instrument))].classList[1];
+
+    if (keyStop==0){
+        pressKey(getKey);
+    }
+})
+
+/*
 document.addEventListener('click', function(e){
     
     let instrument = e.target.classList[1];
@@ -220,7 +239,7 @@ document.addEventListener('click', function(e){
     if (keyStop==0){
         pressKey(getKey);
     }
-});
+});*/
 
 //----------------------------------------------------------//
 
