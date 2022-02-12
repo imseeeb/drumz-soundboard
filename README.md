@@ -2,6 +2,7 @@
 
 ![drumz](https://user-images.githubusercontent.com/97133099/148226305-62ea8c54-b38b-4f21-8bfd-9d398a37c4a5.gif)
 
+Soundboard / Drumset, you can play basic percussion sounds with keyboard, mouse or touchscreen.
 Inspired by **JavaScript30** challenge: https://github.com/wesbos/JavaScript30
 
 ## Info
